@@ -1,6 +1,6 @@
 'use strict';
 
-const debug = true;
+const debug = false;
 let dateAry = [];
 const inputCaseEl = document.querySelector('.attendance__result--case');
 const pageEl = document.querySelectorAll('main > article');
