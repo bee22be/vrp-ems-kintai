@@ -91,10 +91,10 @@ main {
                     padding: 4px 8px;
                 }
                 th {
-                    background-color: #333;
+                    background-color: var(--bg-color-main);
                 }
                 td {
-                    border: 1px solid #333;
+                    border: 1px solid var(--bg-color-main);
                 }
             }
             ul, ol {
