@@ -1,0 +1,306 @@
+:root {
+    --color1: #FF2B57;
+    --color2: #00AFFD;
+    --color3: #FFAC31;
+    --color4: #2EE73E;
+    --color5: #9065FC;
+    --bg-color-main: #131519;
+    --bg-color-sub: #1C212A;
+}
+*,*::before,*::after{box-sizing:border-box}html{-moz-text-size-adjust:none;-webkit-text-size-adjust:none;text-size-adjust:none}body,h1,h2,h3,h4,p,figure,blockquote,dl,dd{margin:0}ul[role='list'],ol[role='list']{list-style:none}body{min-height:100vh;line-height:1.5}h1,h2,h3,h4,button,input,label{line-height:1.1}h1,h2,h3,h4{text-wrap:balance}a:not([class]){text-decoration-skip-ink:auto;color:currentColor}img,picture{max-width:100%;display:block}input,button,textarea,select{font:inherit}textarea:not([rows]){min-height:10em}:target{scroll-margin-block:5ex}
+
+/*
+@see
+https://dribbble.com/shots/20197361-Tution-App/attachments/15267166?mode=media
+*/
+
+html,
+body {
+    background-color: var(--bg-color-main);
+    color: #fff;
+    height: 100vh;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+button {
+    cursor: pointer;
+}
+.box {
+    margin: 0 16px 32px;
+    padding: 16px;
+    border-radius: 16px;
+    background-color: var(--bg-color-sub);
+}
+
+.header {
+    position: fixed;
+    z-index: 2;
+    inset: 0 0 auto 0;
+    padding: 16px;
+    background-color: var(--bg-color-sub);
+    h1 {
+        font-size: 16px;
+        text-align: center;
+        .header__title-cat {
+            margin-left: 0.5em;
+        }
+    }
+}
+main {
+    position: absolute;
+    inset: calc( (16px + 16px + 16px) + 32px) 0 60px 0;
+    article {
+        display: none;
+        &.js-on {
+            display: block;
+        }
+    }
+}
+
+.time {
+    text-align: center;
+    margin: 0 16px 24px;
+    .time__hhmm{
+        font-size: 50px;
+    }
+    .time__hhmm--colon {
+        display: inline-block;
+        margin: 0 4px;
+        animation: blink 1s steps(1) infinite;
+        transform: translateY(-4px);
+    }
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+.attendance {
+    text-align: center;
+    h2 {
+        display: none;
+    }
+    label {
+        display: block;
+        margin-bottom: 8px;
+        span::after {
+            content: " :";
+        }
+    }
+    .attendance__buttons {
+        text-align: center;
+        margin: 16px 0 32px;
+    }
+    .attendance__button {
+        display: inline-block;
+        color: #fff;
+        border-radius: 8px;
+        padding: 8px 32px;
+        font-size: 18px;
+        text-shadow: -1px -1px 0 rgba(0, 0, 0, .3);
+        &[disabled]{
+            pointer-events: none;
+            filter: grayscale(100%);
+            opacity: 0.5;
+        }
+    }
+    .attendance__button--begin {
+        border-color: var(--color2);
+        background-color: var(--color2);
+        margin-right: 10px;
+    }
+    .attendance__button--finish {
+        border-color: var(--color3);
+        background-color: var(--color3);
+    }
+    .attendance__button--send {
+        margin: 8px auto 0;
+        border-color: var(--color1);
+        background-color: lighten(var(--color1), 100%);
+        background-color: var(--color1);
+    }
+}
+.information {
+    h2 {
+        font-size: 16px;
+    }
+}
+
+.footer {
+    position: fixed;
+    z-index: 2;
+    inset: auto 0 0 0;
+    background-color: var(--bg-color-sub);
+    menu {
+        margin: 0;
+        padding: 0;
+    }
+    ul {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li{
+            background-position: 50% 6px;
+            background-repeat: no-repeat;
+            opacity: 0.5;
+            margin: 0;
+            padding: 30px 0 10px;
+            height: 62px;
+            flex-grow: 1;
+            text-align: center;
+            font-size: 12px;
+            transition: opacity 300ms ease-in-out;
+            &.js-on {
+                opacity: 1;
+            }
+        }
+    }
+    .menu {
+        .menu__item--home {
+            background-image: url(../img/home.svg);
+        }
+        .menu__item--record {
+            background-image: url(../img/record.svg);
+        }
+        .menu__item--instructions {
+            background-image: url(../img/instructions.svg);
+        }
+        .menu__item--setting {
+            background-image: url(../img/setting.svg);
+        }
+    }
+}
+
+dialog {
+    inset: 0 0 0 0;
+    &[open]::backdrop {
+        background-color: rgba(255, 255, 255, .5);
+        opacity: 0.75;
+    }
+}
+
+.starting {
+    position: fixed;
+    z-index: 9;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background-color: var(--bg-color-main);
+    &.js-ok {
+        animation: fade-out 1s ease-in-out forwards;
+    }
+    .startingWrap {
+        padding: 16px;
+        border-radius: 16px;
+        background-color: var(--bg-color-sub);
+        width: 340px;
+        /* opacity: 0;
+        animation: fade-in 500ms .5s ease-in-out forwards; */
+
+        &.js-ng {
+            animation: horizontal-shaking 300ms ease-in-out;
+        }
+        &.js-ok {
+            animation: fade-out 600ms ease-in-out forwards;
+            pointer-events: none;
+        }
+    }
+    .starting__disc {
+        margin-bottom: 16px;
+    }
+    label {
+        display: flex;
+        margin-bottom: 8px;
+        border-bottom: 1px solid var(--color2);
+        span {
+            display: inline-block;
+            width: 80px;
+            vertical-align: middle;
+        }
+        .starting__input {
+            flex-grow: 1;
+            vertical-align: middle;
+            background: none;
+            border: 0;
+            color: #fff;
+        }
+    }
+    .starting__footer {
+        display: flex;
+        .starting__errorWrap {
+            color: var(--color1);
+            flex-grow: 1;
+            opacity: 0;
+            &.js-ng {
+                animation: fade-ng-message 3s ease-in-out;
+            }
+            p {
+                display: none;
+            }
+        }
+    }
+}
+.landing {
+    position: fixed;
+    z-index: 8;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background-color: var(--bg-color-main);
+    &.js-on {
+        animation: fade-out 1s 1.5s ease-in-out forwards;
+        pointer-events: none;
+        &::after {
+            animation: fade-in 500ms .1s ease-in-out forwards;
+        }
+    }
+    &::after {
+        content: '';
+        display: inline-block;
+        width: 150px;
+        height: 150px;
+        background: url(../img/ViceCityLogo.png) no-repeat 50% 50% / 150px 150px;
+        opacity: 0;
+    }
+}
+
+@keyframes horizontal-shaking {
+    0% { transform: translateX(0) }
+    25% { transform: translateX(5px) }
+    50% { transform: translateX(-5px) }
+    75% { transform: translateX(5px) }
+    100% { transform: translateX(0) }
+}
+@keyframes fade-ng-message {
+    0%,100% {
+        opacity: 0;
+    }
+    1%,99% {
+        opacity: 1;
+    }
+}
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: scale(.9);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

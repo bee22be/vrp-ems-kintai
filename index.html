@@ -1,13 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name=”robots” content=”noindex,nofollow”>
+    <meta name="apple-mobile-web-app-title" content="EMS 勤怠">
+    <title>勤怠</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>勤怠ちゃん - VRP EMS</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="./assets/img/icon.png">
+    <link rel="shortcut icon" href="./assets/img/icon.png">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#1C212A">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header></header>
-    <main></main>
-    <footer></footer>
+    <header class="header">
+        <h1 class="header__title"><span class="header__title-name"></span><span class="header__title-cat">ホーム</span></h1>
+    </header>
+    <main>
+        <article class="page__attendance js-on">
+            <div class="time">
+                <div class="time__day"></div>
+                <time class="time__hhmm"><span class="time__hhmm--hh"></span><span class="time__hhmm--colon">:</span><span class="time__hhmm--mm"></span></time>
+            </div>
+            <section class="attendance box">
+                <h2>勤怠入力</h2>
+                <div class="attendance__buttons">
+                    <button type="button" class="attendance__button attendance__button--begin">出勤</button>
+                    <button type="button" class="attendance__button attendance__button--finish" disabled>退勤</button>
+                </div>
+                <div class="attendance__result">
+                    <label>
+                        <span>出勤時間</span>
+                        <input type="datetime-local" value="">
+                    </label>
+                    <label>
+                        <span>退勤時間</span>
+                        <input type="datetime-local" value="">
+                    </label>
+                    <label>
+                        <span>事件対応</span>
+                        <input type="number" step="1" min="0" value="0">
+                    </label>
+                </div>
+                <div class="attendance__sendWrap"></div>
+            </section>
+            <section class="information box">
+                <h2>お知らせ</h2>
+                <dl>
+                    <dt></dt>
+                    <dd></dd>
+                </dl>
+            </section>
+        </article>
+        <article class="page__record">
+
+        </article>
+        <article class="page__instructions">
+
+        </article>
+        <article class="page__setting">
+            <label>
+                <span>名前</span>
+                <input type="text" class="setting__name" name="setting__name">
+            </label>
+        </article>
+    </main>
+    <footer class="footer">
+        <menu class="menu">
+            <ul class="menu__list">
+                <li class="menu__item menu__item--home js-on"><a>ホーム</a></li>
+                <li class="menu__item menu__item--record"><a>勤怠記録</a></li>
+                <li class="menu__item menu__item--instructions"><a>説明</a></li>
+                <li class="menu__item menu__item--setting"><a>設定</a></li>
+            </ul>
+        </menu>
+    </footer>
+    <!-- <dialog open>aaa</dialog> -->
+    <aside class="starting">
+        <form class="startingWrap">
+            <p class="starting__disc">このツールは関係者以外は使用しないでください。</p>
+            <label>
+                <span>name</span>
+                <input type="text" class="starting__input starting__input--text" required>
+            </label>
+            <label>
+                <span>pass</span>
+                <input type="password" class="starting__input starting__input--pass" required>
+            </label>
+            <footer class="starting__footer">
+                <div class="starting__errorWrap">
+                    <p class="starting__error">※ passが違うヨ</p>
+                    <p class="starting__error2">※ nameを入力してネ</p>
+                </div>
+                <button type="submit" class="starting__button">送信</button>
+            </footer>
+        </form>
+    </aside>
+    <aside class="landing"></aside>
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
