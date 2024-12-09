@@ -48,14 +48,13 @@ function sendSpreadsheets(ary){
 }
 
 function setHTML(){
-    const myName = localStorage.getItem('VCRP__name') ? localStorage.getItem('VCRP__name') : '名無しさん' ;
     document.querySelector('.landing').classList.add('js-on');
     document.querySelectorAll('title, .header__title > .header__title-name').forEach(function(element) {
         element.textContent = 'EMS勤怠';
     });
     document.querySelector('.attendance__sendWrap').innerHTML = '<button type="button" class="attendance__button attendance__button--send" disabled>勤怠を提出する</button>';
-    document.querySelector('.setting__name').value = myName;
-    document.querySelector('.time__name').textContent = `Hi, ${myName}さん`;
+
+    greeting();
 
     // temp見る
     if(localStorage.getItem('VCRP__temp')){
@@ -107,6 +106,12 @@ function setHTML(){
     });
 }
 
+function greeting() {
+    const myName = localStorage.getItem('VCRP__name') ? localStorage.getItem('VCRP__name') : '名無し' ;
+    document.querySelector('.setting__name').value = myName;
+    document.querySelector('.time__name').textContent = `Hi, ${myName}さん`;
+}
+
 function makeRecord(){
     document.querySelector('.page__record').innerHTML = '';
     if(localStorage.getItem('VCRP__record')){
@@ -120,11 +125,8 @@ function makeRecord(){
             div.classList.add('tableWrap');
             const table = document.createElement('table');
             div.appendChild(table);
-            const tr = document.createElement('tr');
-            tr.innerHTML = '<th>名前</th><th>事件対応数</th><th>出勤時間</th><th>退勤時間</th>';
             s.appendChild(h2);
             s.appendChild(div);
-            table.appendChild(tr);
             document.querySelector('.page__record').appendChild(s);
             tempAry[key].forEach(function(val){
                 const tr = document.createElement('tr');
@@ -134,8 +136,11 @@ function makeRecord(){
                     tr.appendChild(td);
                     // console.log(val2);
                 });
-                table.appendChild(tr);
+                table.prepend(tr);
             });
+            const tr = document.createElement('tr');
+            tr.innerHTML = '<th>名前</th><th>事件対応数</th><th>出勤時間</th><th>退勤時間</th>';
+            table.prepend(tr);
         });
     }else{
         const s = document.createElement('section');
@@ -253,6 +258,16 @@ document.querySelector('.attendance__result--casePlus').addEventListener('click'
 document.querySelector('.attendance__result--caseMinus').addEventListener('click', function(event){
     inputCaseEl.stepDown();
     manageCase();
+});
+
+document.querySelector('.setting__name').addEventListener('change', function(event){
+    localStorage.setItem('VCRP__name',this.value);
+    if(localStorage.getItem('VCRP__temp')){
+        const tempAry = JSON.parse(localStorage.getItem('VCRP__temp'));
+        tempAry[0] = this.value;
+        localStorage.setItem('VCRP__temp',JSON.stringify(tempAry));
+    }
+    greeting();
 });
 
 document.querySelector('.attendance__result--start').addEventListener('change', function(event){
