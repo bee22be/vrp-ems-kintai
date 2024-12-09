@@ -30,6 +30,25 @@ button {
     border-radius: 16px;
     background-color: var(--bg-color-sub);
 }
+label.input {
+    display: flex;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--color2);
+    span {
+        display: inline-block;
+        width: 80px;
+        vertical-align: middle;
+    }
+    input {
+        flex-grow: 1;
+        vertical-align: middle;
+        box-sizing: border-box;
+        background: none;
+        border: 0;
+        color: #fff;
+        width: 100%;
+    }
+}
 
 .header {
     position: fixed;
@@ -57,11 +76,12 @@ main {
         section {
             h2 {
                 font-size: 18px;
+                margin-bottom: 16px;
             }
             .tableWrap {
                 overflow-x: scroll;
                 margin-top: 8px;
-                font-size: 90%;
+                font-size: 14px;
                 table {
                     width: 100%;
                     white-space: nowrap;
@@ -79,6 +99,7 @@ main {
             }
             ul, ol {
                 padding-left: 20px;
+                font-size: 14px;
                 li {
                     margin-bottom: 8px;
                 }
@@ -110,11 +131,16 @@ main {
     .time__hhmm--colon {
         display: inline-block;
         margin: 0 4px;
-        animation: blink 1s steps(1) infinite;
+        /* animation: blink 1s steps(1) infinite; */
         transform: translateY(-4px);
     }
     .time__name {
         display: block;
+    }
+    .time__hhmm--ss {
+        font-size: 20px;
+        margin-left: 8px;
+        color: #888;
     }
 }
 
@@ -207,10 +233,6 @@ main {
     }
 }
 .information {
-    h2 {
-        font-size: 16px;
-        margin-bottom: 16px;
-    }
     .information__dl {
         font-size: 80%;
         dt {
@@ -229,7 +251,7 @@ main {
 }
 .setting {
     .setting__list {
-        font-size: 80%;
+        font-size: 14px;
     }
 }
 
@@ -317,24 +339,6 @@ dialog {
     }
     .starting__disc {
         margin-bottom: 16px;
-    }
-    label {
-        display: flex;
-        margin-bottom: 8px;
-        border-bottom: 1px solid var(--color2);
-        span {
-            display: inline-block;
-            width: 80px;
-            vertical-align: middle;
-        }
-        .starting__input {
-            flex-grow: 1;
-            vertical-align: middle;
-            background: none;
-            border: 0;
-            color: #fff;
-            width: 100%;
-        }
     }
     .starting__footer {
         display: flex;

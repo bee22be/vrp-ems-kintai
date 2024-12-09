@@ -179,11 +179,13 @@ function timer(){
         get00(now.getMonth() + 1),
         get00(now.getDate()),
         get00(now.getHours()),
-        get00(now.getMinutes())
+        get00(now.getMinutes()),
+        get00(now.getSeconds()),
     ];
     document.querySelector('.time__day').textContent = `${dateAry[0]}年${dateAry[1]}月${dateAry[2]}日`;
     document.querySelector('.time__hhmm--hh').textContent = `${dateAry[3]}`;
     document.querySelector('.time__hhmm--mm').textContent = `${dateAry[4]}`;
+    document.querySelector('.time__hhmm--ss').textContent = `${dateAry[5]}`;
     // console.dir(dateAry);
 }
 

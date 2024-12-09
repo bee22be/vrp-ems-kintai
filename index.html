@@ -25,7 +25,7 @@
         <article class="page__attendance js-on">
             <div class="time">
                 <div class="time__text"><span class="time__name"></span><span class="time__day"></span></div>
-                <time class="time__hhmm"><span class="time__hhmm--hh"></span><span class="time__hhmm--colon">:</span><span class="time__hhmm--mm"></span></time>
+                <time class="time__hhmm"><span class="time__hhmm--hh"></span><span class="time__hhmm--colon">:</span><span class="time__hhmm--mm"></span><span class="time__hhmm--ss"></span></time>
             </div>
             <section class="attendance box">
                 <h2>勤怠入力</h2>
@@ -91,7 +91,7 @@
         </article>
         <article class="page__setting">
             <section class="setting box">
-                <label class="js-on">
+                <label class="input js-on">
                     <span>名前</span>
                     <input type="text" class="setting__name" name="setting__name">
                 </label>
@@ -116,11 +116,11 @@
     <aside class="starting">
         <form class="startingWrap">
             <p class="starting__disc">このツールは関係者以外は使用しないでください。</p>
-            <label>
+            <label class="input">
                 <span>name</span>
                 <input type="text" class="starting__input starting__input--text" required>
             </label>
-            <label>
+            <label class="input">
                 <span>pass</span>
                 <input type="password" class="starting__input starting__input--pass" required>
             </label>
