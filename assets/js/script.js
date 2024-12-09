@@ -1,12 +1,5 @@
 'use strict';
 
-// console.log(window.crypto.subtle)
-// if (window.crypto.subtle) {
-//     console.log('Web Crypto API is supported');
-// } else {
-//     console.error('Web Crypto API is not supported');
-// }
-
 const startDialogEl = document.querySelector('.starting');
 const startDialogWrapEl = document.querySelector('.startingWrap');
 const startDialogErrorEl = document.querySelector('.starting__errorWrap');
@@ -43,14 +36,12 @@ document.querySelector('.starting__button').addEventListener('click', function(e
         const myName = document.querySelector('.starting__input--text').value;
         if(myName === '' && hash === '7c0a0a5d856698fc86b3d4328f6e0cec97047abe725b56c404d94d591e32ae17'){
             console.log('name NG!');
-            alert('name NG!');
             startDialogErrorEl.querySelector('p:nth-of-type(1)').setAttribute('style', "display: none;");
             startDialogErrorEl.querySelector('p:nth-of-type(2)').setAttribute('style', "display: block;");
             startDialogWrapEl.classList.add('js-ng');
             startDialogErrorEl.classList.add('js-ng');
         } else if(hash==='7c0a0a5d856698fc86b3d4328f6e0cec97047abe725b56c404d94d591e32ae17'){
             console.log('OK!');
-            alert('OK!');
 
             document.querySelector('.setting__name').value = myName;
             startDialogWrapEl.classList.add('js-ok');
@@ -63,7 +54,6 @@ document.querySelector('.starting__button').addEventListener('click', function(e
 
         } else {
             console.log('NG!');
-            alert('NG!');
             startDialogErrorEl.querySelector('p:nth-of-type(2)').setAttribute('style', "display: none;");
             startDialogErrorEl.querySelector('p:nth-of-type(1)').setAttribute('style', "display: block;");
             startDialogWrapEl.classList.add('js-ng');

@@ -34,17 +34,19 @@
                     <button type="button" class="attendance__button attendance__button--finish" disabled>退勤</button>
                 </div>
                 <div class="attendance__result">
+                    <label class="attendance__resultCaseWrap">
+                        <span>事件対応数</span>
+                        <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">🔽</button>
+                        <input type="number" step="1" min="0" value="0">
+                        <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">🔼</button>
+                    </label>
                     <label>
                         <span>出勤時間</span>
-                        <input type="datetime-local" value="">
+                        <input type="datetime-local" class="attendance__result--start" value="">
                     </label>
                     <label>
                         <span>退勤時間</span>
-                        <input type="datetime-local" value="">
-                    </label>
-                    <label>
-                        <span>事件対応</span>
-                        <input type="number" step="1" min="0" value="0">
+                        <input type="datetime-local" class="attendance__result--finish" value="">
                     </label>
                 </div>
                 <div class="attendance__sendWrap"></div>
@@ -61,7 +63,10 @@
 
         </article>
         <article class="page__instructions">
-
+            <section>
+                <h2>基本的な流れ</h2>
+                <h2>1日に複数回出勤する場合</h2>
+            </section>
         </article>
         <article class="page__setting">
             <label>
