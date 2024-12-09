@@ -24,7 +24,7 @@
     <main>
         <article class="page__attendance js-on">
             <div class="time">
-                <div class="time__day"></div>
+                <div class="time__text"><span class="time__name"></span><span class="time__day"></span></div>
                 <time class="time__hhmm"><span class="time__hhmm--hh"></span><span class="time__hhmm--colon">:</span><span class="time__hhmm--mm"></span></time>
             </div>
             <section class="attendance box">
@@ -34,17 +34,17 @@
                     <button type="button" class="attendance__button attendance__button--finish" disabled>退勤</button>
                 </div>
                 <div class="attendance__result">
-                    <label class="attendance__resultCaseWrap">
+                    <label class="attendance__resultCaseWrap" for="attendance__result--case">
                         <span>事件対応数</span>
-                        <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">🔽</button>
-                        <input type="number" step="1" min="0" value="0">
-                        <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">🔼</button>
+                        <button type="button" class="attendance__result--caseMinus">🔽</button>
+                        <input type="number" id="attendance__result--case" class="attendance__result--case" step="1" min="0" value="0">
+                        <button type="button" class="attendance__result--casePlus">🔼</button>
                     </label>
-                    <label>
+                    <label class="attendance__resultStartWrap">
                         <span>出勤時間</span>
                         <input type="datetime-local" class="attendance__result--start" value="">
                     </label>
-                    <label>
+                    <label class="attendance__resultFinishWrap">
                         <span>退勤時間</span>
                         <input type="datetime-local" class="attendance__result--finish" value="">
                     </label>
@@ -60,19 +60,49 @@
             </section>
         </article>
         <article class="page__record">
-
         </article>
         <article class="page__instructions">
-            <section>
+            <section class="box">
+                <h2>前提条件</h2>
+                <ul>
+                    <li>違うデバイス間で勤怠を共有できません（スマホで勤怠する場合はずっとスマホを用いるようにしてください）</li>
+                    <li>インターネットの環境が悪い場合は正しく勤怠情報が送信されない可能性があるので、電波環境の良い状態で勤怠を送信してください</li>
+                    <li>デバイス内の情報をエクスポートできるようにする予定はありません<br>勤怠情報はサーバーに保存されるので、デバイス側のデータを気にする必要はありません</li>
+                </ul>
+            </section>
+            <section class="box">
+                <h2>初使用時の流れ</h2>
+                <ol>
+                    <li>【初回】パスワードと名前（基本変更しない）を入力してログイン</li>
+                </ol>
+            </section>
+            <section class="box">
                 <h2>基本的な流れ</h2>
+                <ol>
+                    <li>出勤時に「出勤」ボタンを押す<br>※この時出勤時間を変更したい場合は、「出勤」ボタン下部のフィールドをクリックして日時の変更をしてください</li>
+                    <li>事件対応を行った場合は🔼🔽ボタン、もしくは直接入力で件数を記録してください<br>出勤〜退勤までに行った事件対応数を入力してください（日単位ではないです）</li>
+                    <li>退勤したい時に「退勤」ボタンを押す<br>※この時退勤時間を変更したい場合は、「退勤」ボタン下部のフィールドをクリックして日時の変更をしてください</li>
+                    <li>事件対応数、出勤、退勤の数と時間が問題ない場合は、「勤怠を提出する」ボタンを押して提出してください<br>※基本的には提出した勤怠は修正できません。どうしても修正したい場合は勤怠管理者に問い合わせてください。</li>
+                </ol>
+            </section>
+            <section class="box">
                 <h2>1日に複数回出勤する場合</h2>
+                <ul>
+                    <li>1日に何回も勤怠を提出して問題ないので、同日でも出勤するたびに「基本的な流れ」の手順を実施してください</li>
+                </ul>
             </section>
         </article>
         <article class="page__setting">
-            <label>
-                <span>名前</span>
-                <input type="text" class="setting__name" name="setting__name">
-            </label>
+            <section class="setting box">
+                <label class="js-on">
+                    <span>名前</span>
+                    <input type="text" class="setting__name" name="setting__name">
+                </label>
+                <ul class="setting__list">
+                    <li>名前は勤怠のデータ集計で同じ名前を参照するため、基本的には変更はしないでください。</li>
+                    <li>変更した場合は勤怠管理者へと連絡してください。<br>※連絡しなかった場合、勤怠が通常に処理されません。</li>
+                </ul>
+            </section>
         </article>
     </main>
     <footer class="footer">

@@ -50,8 +50,53 @@ main {
     inset: calc( (16px + 16px + 16px) + 32px) 0 60px 0;
     article {
         display: none;
+        padding-bottom: 62px;
         &.js-on {
             display: block;
+        }
+        section {
+            h2 {
+                font-size: 18px;
+            }
+            .tableWrap {
+                overflow-x: scroll;
+                margin-top: 8px;
+                font-size: 90%;
+                table {
+                    width: 100%;
+                    white-space: nowrap;
+                    border-spacing: 0;
+                }
+                th, td {
+                    padding: 4px 8px;
+                }
+                th {
+                    background-color: #333;
+                }
+                td {
+                    border: 1px solid #333;
+                }
+            }
+            ul, ol {
+                padding-left: 20px;
+                li {
+                    margin-bottom: 8px;
+                }
+            }
+        }
+    }
+    label {
+        display: block;
+        margin-bottom: 8px;
+        opacity: 0.2;
+        pointer-events: none;
+        transition: opacity ease-in-out 300ms;
+        &.js-on {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        span::after {
+            content: " :";
         }
     }
 }
@@ -68,6 +113,9 @@ main {
         animation: blink 1s steps(1) infinite;
         transform: translateY(-4px);
     }
+    .time__name {
+        display: block;
+    }
 }
 
 @keyframes blink {
@@ -83,13 +131,6 @@ main {
     text-align: center;
     h2 {
         display: none;
-    }
-    label {
-        display: block;
-        margin-bottom: 8px;
-        span::after {
-            content: " :";
-        }
     }
 
     .attendance__buttons {
@@ -151,11 +192,11 @@ main {
             border: none;
             align-items: center;
             justify-content: center;
-            width: 2.5rem;
-            height: 3rem;
             cursor: pointer;
             margin: 0;
             position: relative;
+            font-size: 20px;
+            vertical-align: bottom;
         }
     }
     .attendance__button--send {
@@ -168,6 +209,11 @@ main {
 .information {
     h2 {
         font-size: 16px;
+    }
+}
+.setting {
+    .setting__list {
+        font-size: 80%;
     }
 }
 
@@ -186,9 +232,10 @@ main {
         margin: 0;
         padding: 0;
         li{
+            cursor: pointer;
             background-position: 50% 6px;
             background-repeat: no-repeat;
-            opacity: 0.5;
+            opacity: 0.2;
             margin: 0;
             padding: 30px 0 10px;
             height: 62px;
@@ -240,6 +287,7 @@ dialog {
         border-radius: 16px;
         background-color: var(--bg-color-sub);
         width: 340px;
+        display: none;
         /* opacity: 0;
         animation: fade-in 500ms .5s ease-in-out forwards; */
 

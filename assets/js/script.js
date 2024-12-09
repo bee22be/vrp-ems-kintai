@@ -4,6 +4,13 @@ const startDialogEl = document.querySelector('.starting');
 const startDialogWrapEl = document.querySelector('.startingWrap');
 const startDialogErrorEl = document.querySelector('.starting__errorWrap');
 
+function init(){
+    checkStorage();
+    setTimeout(function(){
+        startDialogWrapEl.setAttribute('style','display: block;')
+    },500)
+}
+
 async function sha256(text){
     const uint8  = new TextEncoder().encode(text)
     const digest = await crypto.subtle.digest('SHA-256', uint8)
@@ -43,7 +50,6 @@ document.querySelector('.starting__button').addEventListener('click', function(e
         } else if(hash==='7c0a0a5d856698fc86b3d4328f6e0cec97047abe725b56c404d94d591e32ae17'){
             console.log('OK!');
 
-            document.querySelector('.setting__name').value = myName;
             startDialogWrapEl.classList.add('js-ok');
             startDialogEl.addEventListener("animationend", () => {
                 setCore();
@@ -51,6 +57,7 @@ document.querySelector('.starting__button').addEventListener('click', function(e
             startDialogEl.classList.add('js-ok');
 
             localStorage.setItem("VCRP__login", pass);
+            localStorage.setItem("VCRP__name", myName);
 
         } else {
             console.log('NG!');
@@ -70,4 +77,4 @@ startDialogErrorEl.addEventListener("animationend", () => {
     startDialogErrorEl.classList.remove("js-ng");
 });
 
-checkStorage();
+init();
