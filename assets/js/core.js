@@ -1,10 +1,17 @@
 'use strict';
 
-const debug = false;
+const debug = true;
 let dateAry = [];
 const inputCaseEl = document.querySelector('.attendance__result--case');
 const pageEl = document.querySelectorAll('main > article');
 const menuListEl = document.querySelectorAll('.menu__list > li');
+const infoText = [
+    [
+        'テスト版リリース',
+        '勤怠アプリを作成しました。バグや要望はべべまでご連絡ください。',
+        '2024/12/09'
+    ],
+];
 
 function init(){
     if(debug) dbg();
@@ -84,6 +91,19 @@ function setHTML(){
             makeRecord();
             manageAttendance(3);
         }
+    });
+
+    infoText.forEach(function(val){
+        const dt = document.createElement('dt');
+        if(val[2]){
+            dt.innerHTML = `<span>${val[0]}</span><time>${val[2]}</time>`;
+        }else{
+            dt.innerHTML = `<span>${val[0]}</span>`;
+        }
+        const dd = document.createElement('dd');
+        dd.innerHTML = `${val[1]}`;
+        document.querySelector('.information__dl').appendChild(dt);
+        document.querySelector('.information__dl').appendChild(dd);
     });
 }
 

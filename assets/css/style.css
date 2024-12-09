@@ -209,6 +209,22 @@ main {
 .information {
     h2 {
         font-size: 16px;
+        margin-bottom: 16px;
+    }
+    .information__dl {
+        font-size: 80%;
+        dt {
+            display: flex;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #ccc;
+            span {
+                flex-grow: 1;
+            }
+        }
+        dd:not(:last-of-type) {
+            margin-bottom: 32px;
+        }
     }
 }
 .setting {
