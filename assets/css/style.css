@@ -363,7 +363,7 @@ dialog {
     place-items: center;
     background-color: var(--bg-color-main);
     &.js-on {
-        animation: fade-out 1s 1.5s ease-in-out forwards;
+        animation: fade-out .8s 1s ease-in-out forwards;
         pointer-events: none;
         &::after {
             animation: fade-in 500ms .1s ease-in-out forwards;
